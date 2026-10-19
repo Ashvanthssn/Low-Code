@@ -1,0 +1,2007 @@
+/*
+ * Author       : ashvanthssn
+ * Generated on : 19-Oct-2026 16:06:56
+ * Version      : 1.0
+ */
+ application "Student Performance Tracker"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Los_Angeles"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form assessment
+		{
+			displayname = "Assessment"
+			success message = "Assessment Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student
+			(
+				type = list	
+				displayname = "Student"
+				values  = student.ID
+    			displayformat = [student_name.first_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			subject_1
+			(
+				type = list	
+				displayname = "Subject"
+				values  = subject1.ID
+    			displayformat = [subject_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			topic_name
+			(
+    			type = text
+				displayname = "Topic Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			total_marks
+			(
+				type = number
+				displayname = "Total Marks"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			marks_obtained
+			(
+				type = number
+				displayname = "Marks Obtained"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			percentage
+			(
+				type = decimal
+				displayname = "Percentage"
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = radiobuttons
+				displayname = "Status"
+				values = {"Needs Improvement","Good Progress"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Assessment Created","Assessment In Progress","Assessment Draft","Assessment Submitted","Assessment On Hold","Assessment Cancelled","Assessment Grading","Assessment Returned","Assessment Graded","Assessment Published","Assessment Re-graded","Assessment Closed"}
+			}
+		}
+		form student
+		{
+			displayname = "Student"
+			success message = "Student Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student_name
+			(
+    			type = name
+				displayname = "Student Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			email
+			(
+    			type = email
+				displayname = "Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			course
+			(
+				type = picklist
+				displayname = "Course"
+				values = {"CSE","ECE","AIML","IT"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form subject1
+		{
+			displayname = "Subject"
+			success message = "Subject Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			subject_name
+			(
+    			type = text
+				displayname = "Subject Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			course
+			(
+				type = picklist
+				displayname = "Course"
+				values = {"CSE","ECE","AIML","IT"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form topic
+		{
+			displayname = "Topic"
+			success message = "Topic Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			topic_name
+			(
+    			type = text
+				displayname = "Topic Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			subject_1
+			(
+				type = list	
+				displayname = "Subject"
+				values  = subject1.ID
+    			displayformat = [subject_name]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			difficulty_level
+			(
+				type = picklist
+				displayname = "Difficulty Level"
+				values = {"Easy","Medium","Hard"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Topic Created","Pending Review","Difficulty Assigned","Topic Rejected","Topic Active","Topic Archived"}
+			}
+		}
+	}
+	reports
+	{
+		list assessment_Report
+		{
+			displayName = "All Assessments"
+			show all rows from assessment    
+			(
+				student as "Student"
+				subject_1 as "Subject"
+				topic_name as "Topic Name"
+				total_marks as "Total Marks"
+				marks_obtained as "Marks Obtained"
+				percentage as "Percentage"
+				status as "Status"
+			)
+		}
+		list topic_Report
+		{
+			displayName = "All Topics"
+			show all rows from topic    
+			(
+				topic_name as "Topic Name"
+				subject_1 as "Subject"
+				difficulty_level as "Difficulty Level"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (difficulty_level == "Easy")
+				fields = [difficulty_level]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (difficulty_level == "Hard")
+				fields = [difficulty_level]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban topic_by_difficulty_level
+		{
+			displayName = "Difficulty Levels"
+			show all rows from topic    
+			(
+				topic_name as "Topic Name"
+				subject_1 as "Subject"
+				difficulty_level as "Difficulty Level"
+			)
+			options
+			(
+	 			display field = difficulty_level
+	 		)
+		}
+		list student_Report
+		{
+			displayName = "All Students"
+			show all rows from student    
+			(
+				student_name  as "Student Name"
+				email as "Email"
+				course as "Course"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (course == "AIML")
+				fields = [course]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (course == "CSE")
+				fields = [course]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (course == "ECE")
+				fields = [course]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban student_by_course
+		{
+			displayName = "Courses"
+			show all rows from student    
+			(
+				student_name  as "Student Name"
+				email as "Email"
+				course as "Course"
+			)
+			options
+			(
+	 			display field = course
+	 		)
+		}
+		list subject1_Report
+		{
+			displayName = "All Subjects"
+			show all rows from subject1    
+			(
+				subject_name as "Subject Name"
+				course as "Course"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (course == "AIML")
+				fields = [course]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (course == "ECE")
+				fields = [course]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (course == "IT")
+				fields = [course]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban subject1_by_course
+		{
+			displayName = "Courses"
+			show all rows from subject1    
+			(
+				subject_name as "Subject Name"
+				course as "Course"
+			)
+			options
+			(
+	 			display field = course
+	 		)
+		}
+	}
+	pages
+	{
+		page DashBoard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#F97164'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '64%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginTop = '8px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.assessment.total_marks.sum'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '8px' \n\tmarginTop = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Total Marks'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '36%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#C75A50'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'media-1-volume-up'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#EEA131'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.assessment.percentage.avg'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Average Percentages'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#BE8127'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'business-percentage-38'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#00CFA9'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.assessment.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Total Assessments'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0BA385'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='26%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#3E99DE'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.topic.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Total Topics'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0E78C9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Grouped_Panel 1'\n \n\t\n\ttitle = 'Difficulty Level'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n\t\ttitleColor = '#222326'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#F97164'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'weather-compass'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'transparent'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tcolor = '#C75A50'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'difficulty_level == &quot;Easy&quot;'\n\t  value = 'thisapp.topic.difficulty_level.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Easy'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#EEA131'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'design-shapes'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'transparent'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#BE8127'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'difficulty_level == &quot;Medium&quot;'\n\t  value = 'thisapp.topic.difficulty_level.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Medium'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#00CFA9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'tech-print-round'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'transparent'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0BA385'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'difficulty_level == &quot;Hard&quot;'\n\t  value = 'thisapp.topic.difficulty_level.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Hard'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'transparent'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#3E99DE'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'transparent'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0E78C9'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.topic.difficulty_level.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n\n\n\n\n\n\n\t  value = 'Total'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 1'\n\n\t\n\ttitle = 'Total Marks by Percentage'\n\t\n\t\ttitleSize = '16px'\n\t\ttitleColor = '#222326'\n\ttype = 'Scatter'\n\txtitle = 'Total Marks'\n\tytitle = 'Percentage'\n\tbgColor = '#FFFFFF'\n\ttheme = '#F37D16'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'assessment'\n\txfield = 'total_marks'\n\tyfields = 'value:percentage'\n\tgroupBy = 'student'\n\t\tDelugeCriteria = 'total_marks is not null'\n/>\n\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 2'\n\n\t\n\ttitle = 'Status by Total Marks'\n\t\n\t\ttitleSize = '16px'\n\t\ttitleColor = '#222326'\n\ttype = 'Bar'\n\txtitle = 'Status'\n\tytitle = 'Total Marks'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'assessment'\n\txfield = 'status'\n\tyfields = 'sum:total_marks'\n\tgroupBy = 'student'\n\t\tDelugeCriteria = 'status is not null &amp;&amp; status != &quot;&quot;'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'assessment_Report'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+
+
+		workflow
+		{
+		form
+		{
+			none as "none"
+			{
+				type =  form
+				form = assessment
+
+				record event = on add
+
+				field rules
+				{
+					actions 
+					{
+						show marks_obtained;
+					}
+				}
+
+			}
+		}
+
+
+
+
+		blueprint
+		{
+    			assessment_status_update as "Assessment Status Update"
+    			{
+        			type = Blueprint
+        			form = assessment
+        			start
+        			{
+            			start stage = "Assessment Created"
+        			}
+        			stages
+        			{
+           			"Assessment Created"
+           			{
+           			}
+           			"Assessment In Progress"
+           			{
+           			}
+           			"Assessment Draft"
+           			{
+           			}
+           			"Assessment Submitted"
+           			{
+           			}
+           			"Assessment On Hold"
+           			{
+           			}
+           			"Assessment Cancelled"
+           			{
+           			}
+           			"Assessment Grading"
+           			{
+           			}
+           			"Assessment Returned"
+           			{
+           			}
+           			"Assessment Graded"
+           			{
+           			}
+           			"Assessment Published"
+           			{
+           			}
+           			"Assessment Re-graded"
+           			{
+           			}
+           			"Assessment Closed"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				cancel_assessment as "Cancel Assessment"
+    				{
+         				type = normal
+         				from stage = "Assessment On Hold"
+         				to stage = "Assessment Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_resubmission as "Cancel Re-submission"
+    				{
+         				type = normal
+         				from stage = "Assessment Returned"
+         				to stage = "Assessment Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				close_assessment as "Close Assessment"
+    				{
+         				type = normal
+         				from stage = "Assessment Published"
+         				to stage = "Assessment Closed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_grading as "Complete Grading"
+    				{
+         				type = normal
+         				from stage = "Assessment Grading"
+         				to stage = "Assessment Graded"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				edit_assessment as "Edit Assessment"
+    				{
+         				type = normal
+         				from stage = "Assessment Draft"
+         				to stage = "Assessment Created"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				initiate_grading as "Initiate Grading"
+    				{
+         				type = normal
+         				from stage = "Assessment Submitted"
+         				to stage = "Assessment Grading"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				pause_assessment as "Pause Assessment"
+    				{
+         				type = normal
+         				from stage = "Assessment In Progress"
+         				to stage = "Assessment On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				publish_results as "Publish Results"
+    				{
+         				type = normal
+         				from stage = "Assessment Graded"
+         				to stage = "Assessment Published"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				publish_revised_results as "Publish Revised Results"
+    				{
+         				type = normal
+         				from stage = "Assessment Re-graded"
+         				to stage = "Assessment Published"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_clarification as "Request Clarification"
+    				{
+         				type = normal
+         				from stage = "Assessment Grading"
+         				to stage = "Assessment Submitted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_re_evaluation as "Request Re-evaluation"
+    				{
+         				type = normal
+         				from stage = "Assessment Graded"
+         				to stage = "Assessment Re-graded"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_resubmission as "Request Re-submission"
+    				{
+         				type = normal
+         				from stage = "Assessment Published"
+         				to stage = "Assessment Returned"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_assessment as "Resume Assessment"
+    				{
+         				type = normal
+         				from stage = "Assessment On Hold"
+         				to stage = "Assessment In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_resubmit as "Resume and Re-submit"
+    				{
+         				type = normal
+         				from stage = "Assessment Returned"
+         				to stage = "Assessment In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				return_assessment as "Return for Re-submission"
+    				{
+         				type = normal
+         				from stage = "Assessment Submitted"
+         				to stage = "Assessment Returned"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				save_draft as "Save as Draft"
+    				{
+         				type = normal
+         				from stage = "Assessment Created"
+         				to stage = "Assessment Draft"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				start_assessment as "Start Assessment"
+    				{
+         				type = normal
+         				from stage = "Assessment Created"
+         				to stage = "Assessment In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				submit_assessment as "Submit Assessment"
+    				{
+         				type = normal
+         				from stage = "Assessment In Progress"
+         				to stage = "Assessment Submitted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				update_grading as "Update Grading"
+    				{
+         				type = normal
+         				from stage = "Assessment Re-graded"
+         				to stage = "Assessment Graded"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+		}
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Course Coordinator"
+			{
+				name = "Course Coordinator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Define and manage course structures for AIML, CSE, ECE, and IT streams \n"
+				ModulePermissions
+				{
+					assessment
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							assessment_Report={"View","Edit","Delete"}
+						}
+					}
+					topic
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							topic_Report={"View","Edit","Delete"}
+							topic_by_difficulty_level={"View","Edit","Delete"}
+						}
+					}
+					student
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_Report={"View","Edit","Delete"}
+							student_by_course={"View","Edit","Delete"}
+						}
+					}
+					subject1
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							subject1_by_course={"View","Edit","Delete"}
+							subject1_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Academic Administrator"
+			{
+				name = "Academic Administrator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Maintain the master database of students, subjects, and topics \n"
+				ModulePermissions
+				{
+					assessment
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							assessment_Report={"View","Edit","Delete"}
+						}
+					}
+					topic
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							topic_Report={"View","Edit","Delete"}
+							topic_by_difficulty_level={"View","Edit","Delete"}
+						}
+					}
+					student
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_Report={"View","Edit","Delete"}
+							student_by_course={"View","Edit","Delete"}
+						}
+					}
+					subject1
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							subject1_by_course={"View","Edit","Delete"}
+							subject1_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Teacher"
+			{
+				name = "Teacher"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Record marks and assessment scores for students across various subjects \n"
+				ModulePermissions
+				{
+					assessment
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							assessment_Report={"View","Edit","Delete"}
+						}
+					}
+					topic
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							topic_Report={"View"}
+							topic_by_difficulty_level={"View"}
+						}
+					}
+					student
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_Report={"View","Edit","Delete"}
+							student_by_course={"View","Edit","Delete"}
+						}
+					}
+					subject1
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							subject1_by_course={"View"}
+							subject1_Report={"View"}
+						}
+					}
+				}
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Curriculum Developer"
+			{
+				name = "Curriculum Developer"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Create and update topic definitions with specific difficulty levels \n"
+				ModulePermissions
+				{
+					assessment
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							assessment_Report={"View"}
+						}
+					}
+					topic
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							topic_Report={"View","Edit","Delete"}
+							topic_by_difficulty_level={"View","Edit","Delete"}
+						}
+					}
+					student
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_Report={"View"}
+							student_by_course={"View"}
+						}
+					}
+					subject1
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							subject1_by_course={"View","Edit","Delete"}
+							subject1_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Student"
+			{
+				name = "Student"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "View personal assessment results and percentage scores \n"
+				ModulePermissions
+				{
+					assessment
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							assessment_Report={"View"}
+						}
+					}
+					topic
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							topic_Report={"View"}
+							topic_by_difficulty_level={"View"}
+						}
+					}
+					student
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_Report={"View"}
+							student_by_course={"View"}
+						}
+					}
+					subject1
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							subject1_by_course={"View"}
+							subject1_Report={"View"}
+						}
+					}
+				}
+			}
+			"Parent"
+			{
+				name = "Parent"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Monitor their child's academic performance and learning gaps \n"
+				ModulePermissions
+				{
+					assessment
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							assessment_Report={"View"}
+						}
+					}
+					topic
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							topic_Report={"View"}
+							topic_by_difficulty_level={"View"}
+						}
+					}
+					student
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_Report={"View"}
+							student_by_course={"View"}
+						}
+					}
+					subject1
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							subject1_by_course={"View"}
+							subject1_Report={"View"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form assessment
+			{
+				label placement = left
+			}
+			form student
+			{
+				label placement = left
+			}
+			form subject1
+			{
+				label placement = left
+			}
+			form topic
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report assessment_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student as "Student"
+								subject_1 as "Subject"
+								topic_name as "Topic Name"
+								total_marks as "Total Marks"
+								marks_obtained as "Marks Obtained"
+								percentage as "Percentage"
+								status as "Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								student as "Student"
+								subject_1 as "Subject"
+								topic_name as "Topic Name"
+								total_marks as "Total Marks"
+								marks_obtained as "Marks Obtained"
+								percentage as "Percentage"
+								status as "Status"
+							)
+						)
+						datablock2
+						(
+		     				title = "Subject"
+		     				related field = subject_1
+							fields
+							(
+								subject_name as "Subject Name"
+								course as "Course"
+							)
+						)
+						datablock3
+						(
+		     				title = "Student"
+		     				related field = student
+							fields
+							(
+								student_name as "Student Name"
+								email as "Email"
+								course as "Course"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report topic_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								topic_name as "Topic Name"
+								subject_1 as "Subject"
+								difficulty_level as "Difficulty Level"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								topic_name as "Topic Name"
+								subject_1 as "Subject"
+								difficulty_level as "Difficulty Level"
+							)
+						)
+						datablock2
+						(
+		     				title = "Subject"
+		     				related field = subject_1
+							fields
+							(
+								subject_name as "Subject Name"
+								course as "Course"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report topic_by_difficulty_level
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								topic_name as "Topic Name"
+								subject_1 as "Subject"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								topic_name as "Topic Name"
+								subject_1 as "Subject"
+								difficulty_level as "Difficulty Level"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report student_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student_name as "Student Name"
+								email as "Email"
+								course as "Course"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								student_name as "Student Name"
+								email as "Email"
+								course as "Course"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report student_by_course
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								student_name as "Student Name"
+								email as "Email"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student_name as "Student Name"
+								email as "Email"
+								course as "Course"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report subject1_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								subject_name as "Subject Name"
+								course as "Course"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								subject_name as "Subject Name"
+								course as "Course"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report subject1_by_course
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								subject_name as "Subject Name"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								subject_name as "Subject Name"
+								course as "Course"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Section_1
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page DashBoard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Section_2
+				{
+					displayname = "Assessments"
+					icon = "design-2-selection"
+					form  assessment
+					{
+						icon = "ui-1-bold-add"
+					}
+					report assessment_Report
+					{
+						icon = "travel-world"
+					}
+				}
+				section Section_3
+				{
+					displayname = "Topics"
+					icon = "users-2-focus"
+					form  topic
+					{
+						icon = "ui-1-bold-add"
+					}
+					report topic_Report
+					{
+						icon = "travel-world"
+					}
+					report topic_by_difficulty_level
+					{
+						icon = "weather-drops"
+					}
+				}
+				section Section_4
+				{
+					displayname = "Students"
+					icon = "education-pencil-47"
+					form  student
+					{
+						icon = "ui-1-bold-add"
+					}
+					report student_Report
+					{
+						icon = "travel-world"
+					}
+					report student_by_course
+					{
+						icon = "education-hat"
+					}
+				}
+				section Section_5
+				{
+					displayname = "Subjects"
+					icon = "education-microscope"
+					form  subject1
+					{
+						icon = "ui-1-bold-add"
+					}
+					report subject1_Report
+					{
+						icon = "travel-world"
+					}
+					report subject1_by_course
+					{
+						icon = "education-hat"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "poppins"
+			color options
+			{
+				color = "3"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form assessment
+			{
+				label placement = auto
+			}
+			form student
+			{
+				label placement = auto
+			}
+			form subject1
+			{
+				label placement = auto
+			}
+			form topic
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form assessment
+			{
+				label placement = auto
+			}
+			form student
+			{
+				label placement = auto
+			}
+			form subject1
+			{
+				label placement = auto
+			}
+			form topic
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
